@@ -7,40 +7,38 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="navbar bg-dark p-1">
-      <Link href="/">
-        <h4>Next Google</h4>
-      </Link>
+    <nav className="navbar navbar-expand-lg bg-dark bg-opacity-75 shadow-sm">
+      <div className="container-fluid px-4 d-flex justify-content-between align-items-center">
+        <Link href="/" className="navbar-brand text-white fw-bold fs-4">
+          Next Google
+        </Link>
 
-      {session?.user ? (
-        <div className="me-5 d-flex">
-          <Link href="/dashboard" className="me-2">
-            Dashboard
-          </Link>
-          <p className="text-white me-2">{session.user.name}</p>
+        {session?.user ? (
+          <div className="d-flex align-items-center gap-3">
+            <Link href="/dashboard" className="btn btn-outline-light">
+              Dashboard
+            </Link>
+            <span className="text-white fw-semibold">{session.user.name}</span>
+            <button
+              className="btn btn-outline-warning"
+              onClick={async () => {
+                await signOut({ callbackUrl: `/` });
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
           <button
-            className="btn btn-warning"
-            onClick={async () => {
-              await signOut({
-                callbackUrl: `/`,
-              });
-            }}
-          >
-            logout
-          </button>
-        </div>
-      ) : (
-        <div>
-          <button
-            className="btn btn-success me-2"
+            className="btn btn-success"
             onClick={() => {
               signIn();
             }}
           >
             Sign In
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   );
 }
