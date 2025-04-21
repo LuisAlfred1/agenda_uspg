@@ -2,7 +2,7 @@
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSession } from "next-auth/react";
-import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import SignInCard from "@/components/SignInCard";
 
 export default function ClientLayout({
@@ -35,8 +35,10 @@ export default function ClientLayout({
 
   return (
     <>
-      <Navbar />
-      {children}
+      <Sidebar />
+      <main className="p-2" style={{ marginLeft: "250px" }}>
+        {children}
+      </main>
     </>
   );
 }
