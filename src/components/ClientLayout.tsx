@@ -36,7 +36,7 @@ export default function ClientLayout({
   return (
     <>
       <Sidebar />
-      <main className="p-2" style={{ marginLeft: "250px" }}>
+      <main className="p-3" style={{ marginLeft: "250px" }}>
         {children}
       </main>
     </>
