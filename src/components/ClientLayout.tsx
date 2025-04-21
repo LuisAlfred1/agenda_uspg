@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
 import SignInCard from "@/components/SignInCard";
-import { SyncLoader } from "react-spinners";
 
 export default function ClientLayout({
   children,
