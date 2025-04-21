@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "lottie-react": "^2.4.1",
     "next": "15.2.0",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-spinners": "^0.16.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

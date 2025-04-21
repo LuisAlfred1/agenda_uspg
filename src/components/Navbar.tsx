@@ -1,20 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import SignInCard from "@/components/SignInCard";
 import { signIn, useSession, signOut } from "next-auth/react";
 //import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { data: session } = useSession();
-
-  /*
-  const pathname = usePathname();
-
-  const hideNavbarRoutes = ["/login", "/auth/signin"];
-  const shouldShowNavbar = !hideNavbarRoutes.includes(pathname);
-
-  if (!shouldShowNavbar) return null;
-*/
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark bg-opacity-75 shadow-sm">
@@ -35,18 +27,11 @@ export default function Navbar() {
                 await signOut({ callbackUrl: `/` });
               }}
             >
-              Logout
+              Cerrar sesión
             </button>
           </div>
         ) : (
-          <button
-            className="btn btn-success"
-            onClick={() => {
-              signIn();
-            }}
-          >
-            Sign In
-          </button>
+          <SignInCard />
         )}
       </div>
     </nav>
