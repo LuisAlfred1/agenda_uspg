@@ -4,15 +4,19 @@ import { signIn } from "next-auth/react";
 
 export default function SignInCard() {
   return (
-    <div className="card p-4 shadow" style={{ width: "25rem" }}>
+    <div
+      className="card p-4"
+      style={{
+        width: "25rem",
+        background: "rgba(255, 255, 255, 0.3)",
+        backdropFilter: "blur(10px)",
+      }}
+    >
       <h4 className="mb-3 text-center">Bienvenido a tu To Do</h4>
       <p className="text-muted text-center">
         Inicia sesión con Google para comenzar
       </p>
-      <button
-        className="btn btn-light w-100"
-        onClick={() => signIn("google")}
-      >
+      <button className="btn btn-light w-100" onClick={() => signIn("google")}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0"

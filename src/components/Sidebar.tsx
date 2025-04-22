@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function Sidebar() {
   const { data: session } = useSession();
@@ -19,27 +20,26 @@ export default function Sidebar() {
         }`}
         style={{ width: "250px", position: "fixed", zIndex: 1040 }}
       >
-        <h4 className="mb-4">Next Google</h4>
+        <h5 className="mb-4 text-center">{session.user.name}</h5>
         <ul className="nav flex-column">
           <li className="nav-item mb-2">
             <Link href="/" className="nav-link text-white">
-              Inicio
+              Inicio <i className="bi bi-house"></i>
             </Link>
           </li>
           <li className="nav-item mb-2">
             <Link href="/dashboard" className="nav-link text-white">
-              Dashboard
+              Dashboard <i className="bi bi-cart-dash"></i>
             </Link>
           </li>
         </ul>
         <div className="mt-auto">
           <hr className="text-secondary" />
-          <p className="fw-semibold mb-1">{session.user.name}</p>
           <button
-            className="btn btn-outline-light btn-sm w-100"
+            className="btn btn-outline-light btn-md w-100"
             onClick={() => signOut({ callbackUrl: "/" })}
           >
-            Cerrar sesión
+             Cerrar sesión <i className="bi bi-door-closed"></i>
           </button>
         </div>
       </div>
