@@ -14,13 +14,13 @@ export default function ClientLayout({
 
   if (status === "loading") {
     return (
-      <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-light">
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100 bg-black">
         <div
           className="spinner-border text-primary"
           style={{ width: "4rem", height: "4rem" }}
           role="status"
         />
-        <p className="mt-3 fs-5 text-muted">Cargando tu experiencia...</p>
+        <p className="mt-3 fs-5 text-white">Cargando tu experiencia...</p>
       </div>
     );
   }

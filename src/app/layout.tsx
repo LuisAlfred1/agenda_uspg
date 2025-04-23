@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Microsoft To Do Clone",
+  title: "Digital Planner",
   description: "Una réplica de la app de tareas de Microsoft con Next.js",
 };
 

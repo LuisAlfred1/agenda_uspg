@@ -8,11 +8,13 @@ export default function SignInCard() {
       className="card p-4"
       style={{
         width: "25rem",
-        background: "rgba(255, 255, 255, 0.3)",
-        backdropFilter: "blur(10px)",
+        background: "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(30px)",
       }}
     >
-      <h4 className="mb-3 text-center">Bienvenido a tu To Do</h4>
+      <h4 className="mb-3 text-center">
+        <i className="bi bi-journal-bookmark"></i> Bienvenido a Digital Planner{" "}
+      </h4>
       <p className="text-muted text-center">
         Inicia sesión con Google para comenzar
       </p>
