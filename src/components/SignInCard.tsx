@@ -1,6 +1,8 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import Lottie from "lottie-react";
+import libros from "@/animations/libros.json";
 
 export default function SignInPage() {
   return (
@@ -14,10 +16,11 @@ export default function SignInPage() {
         }}
       >
         <div className="text-center">
-          <i
-            className="bi bi-journal-bookmark"
-            style={{ fontSize: "12rem" }}
-          ></i>
+          <Lottie
+            animationData={libros}
+            loop={true}
+            style={{ width: "300px", height: "300px" }}
+          />
           <h1 className="mt-3">Digital Planner</h1>
           <p className="lead text-center px-3">Organiza tu día como un pro</p>
         </div>
