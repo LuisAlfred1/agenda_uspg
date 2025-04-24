@@ -1,4 +1,4 @@
-export default function DashboardPage() {
+export default function Tareas() {
   return (
     <header
       className="container-fluid px-4 text-white py-5"

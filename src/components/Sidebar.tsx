@@ -28,29 +28,17 @@ export default function Sidebar() {
         }}
       >
         <div className="text-center mb-4 mt-2">
-          {session.user.image ? (
-            <img
-              src={session.user.image}
-              alt="Foto de perfil"
-              className="rounded-circle mb-2"
-              width="70"
-              height="70"
-              style={{ objectFit: "cover", border: "2px solid white" }}
-            />
-          ) : (
-            <div
-              className="d-flex justify-content-center align-items-center rounded-circle mb-2 bg-secondary"
-              style={{
-                width: "80px",
-                height: "80px",
-                border: "2px solid white",
-                fontSize: "2.5rem",
-                color: "white",
-              }}
-            >
-              <i className="bi bi-person-circle"></i>
-            </div>
-          )}
+          <div
+            className="d-flex justify-content-center align-items-center text-center mb-2"
+            style={{
+              fontSize: "3rem",
+              color: "white",
+            }}
+            aria-label="User profile icon"
+          >
+            <i className="bi bi-person" aria-hidden="true"></i>
+          </div>
+
           <h5 className="mb-0">{session.user.name}</h5>
           {session.user.email && (
             <small className="text-secondary">{session.user.email}</small>
@@ -65,7 +53,12 @@ export default function Sidebar() {
           </li>
           <li className="nav-item mb-2">
             <Link href="/dashboard" className="nav-link text-white">
-              <i className="bi bi-view-list me-2"></i> Tareas
+              <i className="bi bi-list-task me-2"></i> Tareas
+            </Link>
+          </li>
+          <li className="nav-item mb-2">
+            <Link href="/notas" className="nav-link text-white">
+              <i className="bi bi-journals me-2"></i> Notas
             </Link>
           </li>
         </ul>
