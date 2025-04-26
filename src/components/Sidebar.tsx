@@ -52,7 +52,7 @@ export default function Sidebar() {
             </Link>
           </li>
           <li className="nav-item mb-2">
-            <Link href="/dashboard" className="nav-link text-white">
+            <Link href="/tareas" className="nav-link text-white">
               <i className="bi bi-list-task me-2"></i> Tareas
             </Link>
           </li>
