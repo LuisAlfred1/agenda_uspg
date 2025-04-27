@@ -61,6 +61,11 @@ export default function Sidebar() {
               <i className="bi bi-journals me-2"></i> Notas
             </Link>
           </li>
+          <li className="nav-item mb-2">
+            <Link href="/ajustes" className="nav-link text-white">
+              <i className="bi bi-gear me-2"></i> Ajustes
+            </Link>
+          </li>
         </ul>
 
         <div className="mt-auto">
