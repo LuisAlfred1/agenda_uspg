@@ -27,7 +27,12 @@ export default function Sidebar() {
           transition: "all 0.3s ease",
         }}
       >
-        <div className="text-center mb-4 mt-2">
+        <div className="d-flex justify-content-end mb-1">
+          <button className="btn" style={{ color: "white", border: "none" }}>
+            <i className="bi bi-gear fs-5"></i>
+          </button>
+        </div>
+        <div className="text-center mb-4 mt-1">
           <div
             className="d-flex justify-content-center align-items-center text-center mb-2"
             style={{
@@ -59,11 +64,6 @@ export default function Sidebar() {
           <li className="nav-item mb-2">
             <Link href="/notas" className="nav-link text-white">
               <i className="bi bi-journals me-2"></i> Notas
-            </Link>
-          </li>
-          <li className="nav-item mb-2">
-            <Link href="/ajustes" className="nav-link text-white">
-              <i className="bi bi-gear me-2"></i> Ajustes
             </Link>
           </li>
         </ul>
