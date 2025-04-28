@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  background: url("https://res.cloudinary.com/dmgdrxfar/image/upload/v1745368938/sea-7204955_lojeqe.jpg");
+  background: url("https://res.cloudinary.com/dmgdrxfar/image/upload/v1745795501/pexels-pixabay-462023_zy5pvu.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,4 +48,8 @@ li:hover{
   background: rgba(255,255,255,.1);
   border-radius: 5px;
   transition:all .2s ease-in-out;
+}
+
+.text-shadow-custom {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
