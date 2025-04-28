@@ -2,7 +2,7 @@
 
 export default function Tareas() {
   return (
-    <div className="d-flex flex-column vh-100 overflow-hidden">
+    <div className="d-flex flex-column  overflow-hidden">
       {/* Encabezado fijo */}
       <header className="p-3 text-white">
         <h3 className="fw-bold text-shadow-custom">Tareas</h3>
@@ -16,9 +16,12 @@ export default function Tareas() {
       </header>
 
       {/* Centro de la pantalla con scroll si es necesario */}
-      <main className="flex-grow-1 d-flex justify-content-center align-items-center overflow-auto">
+      <main
+        className="flex-grow-1 d-flex justify-content-center align-items-center overflow-auto"
+        style={{ paddingBottom: "150px" }}
+      >
         <div
-          className="text-center text-white p-2"
+          className="text-center text-white p-2 mt-5"
           style={{
             background: "rgba(0,0,0,0.4)",
             borderRadius: "10px",
@@ -28,7 +31,7 @@ export default function Tareas() {
         >
           <img
             src="./task.png"
-            alt="Calendario"
+            alt="tarea"
             style={{ width: "80px", marginBottom: "20px" }}
           />
           <h6>Concéntrate en tu día</h6>
@@ -38,7 +41,7 @@ export default function Tareas() {
 
       {/* Barra inferior fija para agregar tarea */}
       <footer
-        className="d-flex align-items-center text-white p-3"
+        className="d-flex align-items-center text-white p-2 mt-3"
         style={{
           background: "rgba(0,0,0,0.5)",
           backdropFilter: "blur(10px)",

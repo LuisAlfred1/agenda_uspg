@@ -1,6 +1,6 @@
 export default function Notas() {
   return (
-    <div className="d-flex vh-100">
+    <div className="d-flex" style={{ height: "600px" }}>
       {/* Sidebar de notas */}
       <div
         className="p-3"
