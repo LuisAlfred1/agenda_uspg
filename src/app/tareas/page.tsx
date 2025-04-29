@@ -7,11 +7,7 @@ export default function Tareas() {
       <header className="p-3 text-white">
         <h3 className="fw-bold text-shadow-custom">Tareas</h3>
         <p className="fs-6 text-shadow-custom">
-          {new Date().toLocaleDateString("es-ES", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-          })}
+          Agrega tus tareas y empieza a organizarlas.
         </p>
       </header>
 

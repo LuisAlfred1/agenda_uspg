@@ -21,9 +21,9 @@ export default function Notas() {
           </button>
         </div>
         <ul className="list-unstyled" style={{ cursor: "pointer" }}>
-          <li className="mb-3">Nota 1</li>
-          <li className="mb-3">Nota 2</li>
-          <li className="mb-3">Nota 3</li>
+          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 1</li>
+          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 2</li>
+          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 3</li>
         </ul>
       </div>
 

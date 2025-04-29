@@ -8,6 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 export default function Sidebar() {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(false);
 
   if (!session?.user) return null;
 
@@ -71,10 +72,15 @@ export default function Sidebar() {
         <div className="mt-auto">
           <hr className="text-secondary" />
           <button
-            className="btn btn-outline-light w-100"
+            className="btn btn-toogle w-100"
             onClick={() => signOut({ callbackUrl: "/" })}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
           >
-            <i className="bi bi-door-closed me-2"></i> Cerrar sesión
+            <i
+              className={`bi ${hover ? "bi-door-open fs-5" : "bi-door-closed fs-5"} me-2`}
+            ></i>
+            Cerrar sesión
           </button>
         </div>
       </div>
@@ -99,6 +105,19 @@ export default function Sidebar() {
       >
         {/* Aquí podrías renderizar children si usas layout */}
       </div>
+
+      <style jsx>
+        {`
+          .btn-toogle {
+            background-color: rgba(32, 32, 32, 0.75);
+            color: white;
+            border: none;
+          }
+          .btn-toogle:hover {
+            background-color: rgba(43, 43, 43, 0.85);
+          }
+        `}
+      </style>
     </div>
   );
 }
