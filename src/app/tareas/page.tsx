@@ -37,7 +37,7 @@ export default function Tareas() {
 
       {/* Barra inferior fija para agregar tarea */}
       <footer
-        className="d-flex align-items-center text-white p-2 mt-3"
+        className="d-flex align-items-center text-white p-2 mt-2"
         style={{
           background: "rgba(0,0,0,0.5)",
           backdropFilter: "blur(10px)",

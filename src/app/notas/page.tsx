@@ -3,7 +3,7 @@ export default function Notas() {
     <div className="d-flex" style={{ height: "600px" }}>
       {/* Sidebar de notas */}
       <div
-        className="p-3"
+        className="p-3 overflow-auto"
         style={{
           width: "300px",
           backgroundColor: "rgba(0,0,0,.8)",
@@ -11,7 +11,7 @@ export default function Notas() {
           backdropFilter: "blur(70px)",
         }}
       >
-        <h5 className="mt-3">Mis Notas</h5>
+        <h5 className="mt-3">Mis notas</h5>
         <div className="mb-2 d-flex gap-2">
           <button className="btn btn-sm btn-light mb-3">
             <i className="bi bi-folder-plus"></i> Crear carpeta
@@ -21,15 +21,21 @@ export default function Notas() {
           </button>
         </div>
         <ul className="list-unstyled" style={{ cursor: "pointer" }}>
-          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 1</li>
-          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 2</li>
-          <li className="mb-2" style={{padding:"3px 6px"}}>Nota 3</li>
+          <li className="mb-2" style={{ padding: "3px 6px" }}>
+            Nota 1
+          </li>
+          <li className="mb-2" style={{ padding: "3px 6px" }}>
+            Nota 2
+          </li>
+          <li className="mb-2" style={{ padding: "3px 6px" }}>
+            Nota 3
+          </li>
         </ul>
       </div>
 
       {/* Contenido principal */}
       <div
-        className="flex-grow-1 d-flex flex-column p-4"
+        className="flex-grow-1 d-flex flex-column p-4 overflow-auto"
         style={{
           backgroundColor: "rgba(0,0,0,0.55)",
           backdropFilter: "blur(70px)",
@@ -43,9 +49,16 @@ export default function Notas() {
           contenido...
         </p>
         <ul>
-          <li>Item 1</li>
-          <li>Item 2</li>
+          <li>primero esto</li>
+          <li>Luego esto</li>
         </ul>
+        <div className="text-center">
+          <img
+            src="./notes.png"
+            alt="notas"
+            style={{ height: "190px", width: "180px" }}
+          />
+        </div>
       </div>
     </div>
   );
