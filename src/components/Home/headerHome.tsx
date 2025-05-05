@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { signOut } from "next-auth/react";
 
@@ -41,9 +40,11 @@ export default function HeaderHome() {
 
         {/* Botones a la derecha */}
         <div className="d-flex align-items-center gap-3">
+          {/*Boton de notificaciones de recordatiorios de tareas */}
           <button className="btn btn" title="Notificaciones">
-            <i className="bi bi-bell fs-5"></i>
+            <i className="bi bi-bell-fill fs-5"></i>
           </button>
+          {/* Botón de cerrar sesión*/}
           <button
             className="btn btn-toogle w-100"
             onClick={() => signOut({ callbackUrl: "/" })}
