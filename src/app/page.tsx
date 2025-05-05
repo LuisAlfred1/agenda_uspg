@@ -12,7 +12,7 @@ export default function HomePage() {
       <HeaderHome />
       <main className="container-fluid px-3">
         <div className="row">
-          {/* Sección de Tareas */}
+          {/* Tareas completadas */}
           <div className="col-md-6 mb-4">
             <div
               className="p-4 d-flex flex-column justify-content-center align-items-center"
@@ -48,21 +48,20 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          {/* Tareas pendientes */}
+          {/* Se mostrara las tareas que estan pendientes, en formato de minicalendario (por ahora) */}
           <div className="col-md-12 mb-4">
             <div
-              className="p-4 d-flex flex-column justify-content-center align-items-center"
+              className="p-4 d-flex flex-column"
               style={{
                 background: "rgba(0, 0, 0, 0.5)",
                 backdropFilter: "blur(40px)",
                 borderRadius: "20px",
-                minHeight: "250px",
+                minHeight: "280px",
                 width: "100%",
               }}
             >
               <div className="text-white text-center mb-4">
-                <h1 className="display-4 fw-bold">0</h1>
-                <p className="mb-0 fs-5">Tareas pendientes</p>
+                <p className="mb-0 fs-5">Tareas para los proximos 7 días ⬇️</p>
               </div>
             </div>
           </div>
