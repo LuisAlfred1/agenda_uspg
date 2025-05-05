@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  background: url("https://res.cloudinary.com/dmgdrxfar/image/upload/v1745795501/pexels-pixabay-462023_zy5pvu.jpg");
+  background: url("https://res.cloudinary.com/dmgdrxfar/image/upload/v1745983474/pexels-pok-rie-33563-130879_i7gd2z.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,5 +51,113 @@ li:hover{
 }
 
 .text-shadow-custom {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.react-calendar {
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(40px);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 20px;
+  height: 220px;
+}
+.react-calendar__tile {
+  background: transparent;
+  color: white;
+  border: none;
+  transition: background 0.3s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.react-calendar__tile:enabled:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.react-calendar__tile--now {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+}
+.react-calendar__tile--active {
+  background: #0d6efd;
+  color: white;
+}
+.react-calendar__navigation button {
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  min-width: 40px;
+}
+.react-calendar__navigation button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: center;
+}
+
+/* Fondo principal del calendario */
+.fc {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(40px);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  border: none;
+}
+
+/* Título del mes/año centrado */
+.fc-toolbar-title {
+  font-weight: bold;
+  color: white;
+}
+
+/* Botones de navegación (prev/next) */
+.fc-button {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+}
+
+.fc-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+/* Días en la cuadrícula */
+.fc-daygrid-day {
+  background: transparent;
+  color: white;
+  transition: background 0.3s;
+  border: none;
+}
+
+.fc-daygrid-day:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Día actual */
+.fc-day-today {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+}
+
+/* Día seleccionado */
+.fc-daygrid-day.fc-day-selected {
+  background: #0d6efd;
+  color: white;
+  border-radius: 10px;
+}
+
+.fc-day{
+  color: white;
 }

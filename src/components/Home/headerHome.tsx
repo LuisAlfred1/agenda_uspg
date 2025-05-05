@@ -11,10 +11,9 @@ export default function HeaderHome() {
     <header
       className="text-white p-3 mb-5"
       style={{
-        position: "fixed", // Fijo
         width: "100%", // Que abarque todo el ancho
         zIndex: 1000, // Para que esté por encima de otros elementos// Altura del header
-        height: "120px" // Fondo semitransparente
+        height: "80px" // Fondo semitransparente
       }}
     >
       <div className="mb-2">

@@ -54,12 +54,17 @@ export default function Sidebar() {
         <ul className="nav flex-column mt-3">
           <li className="nav-item mb-2">
             <Link href="/" className="nav-link text-white">
-              <i className="bi bi-calendar me-2"></i> Mi día
+              <i className="bi bi-house me-2"></i> Dashboard
             </Link>
           </li>
           <li className="nav-item mb-2">
             <Link href="/tareas" className="nav-link text-white">
               <i className="bi bi-list-task me-2"></i> Tareas
+            </Link>
+          </li>
+          <li className="nav-item mb-2">
+            <Link href="/calendario" className="nav-link text-white">
+              <i className="bi bi-calendar-event me-2"></i> Calendario
             </Link>
           </li>
           <li className="nav-item mb-2">
@@ -78,7 +83,9 @@ export default function Sidebar() {
             onMouseLeave={() => setHover(false)}
           >
             <i
-              className={`bi ${hover ? "bi-door-open fs-5" : "bi-door-closed fs-5"} me-2`}
+              className={`bi ${
+                hover ? "bi-door-open fs-5" : "bi-door-closed fs-5"
+              } me-2`}
             ></i>
             Cerrar sesión
           </button>
