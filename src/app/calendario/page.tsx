@@ -12,6 +12,21 @@ export default function CalendarioPage() {
       <main className="container-fluid px-4 py-2">
         <div className="row">
           {/* Calendario */}
+          <div className="col-md-4 mb-4">
+            <div
+              className="p-4 d-flex flex-column"
+              style={{
+                background: "rgba(0, 0, 0, 0.5)",
+                backdropFilter: "blur(40px)",
+                borderRadius: "20px",
+                //minHeight: "250px",
+                //width: "100%",
+              }}
+            >
+              <h2 className="text-white text-center">Eventos</h2>
+              {/* Aquí puedes agregar el componente del calendario */}
+            </div>
+          </div>
           <div className="col-md-8 mb-4">
             <div
               className="p-4 d-flex flex-column"
@@ -24,21 +39,6 @@ export default function CalendarioPage() {
               }}
             >
               <h2 className="text-white text-center">Calendario</h2>
-              {/* Aquí puedes agregar el componente del calendario */}
-            </div>
-          </div>
-          <div className="col-md-4 mb-4">
-            <div
-              className="p-4 d-flex flex-column"
-              style={{
-                background: "rgba(0, 0, 0, 0.5)",
-                backdropFilter: "blur(40px)",
-                borderRadius: "20px",
-                //minHeight: "250px",
-                //width: "100%",
-              }}
-            >
-              <h2 className="text-white text-center">Evento</h2>
               {/* Aquí puedes agregar el componente del calendario */}
             </div>
           </div>
