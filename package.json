@@ -12,16 +12,20 @@
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
     "@lottiefiles/dotlottie-react": "^0.13.4",
+    "@prisma/client": "^6.7.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "date-fns": "^4.1.0",
     "lottie-react": "^2.4.1",
     "next": "15.2.0",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
     "react-calendar": "^5.1.0",
     "react-clock": "^5.1.0",
+    "react-datepicker": "^8.3.0",
     "react-dom": "^19.0.0",
-    "react-spinners": "^0.16.1"
+    "react-spinners": "^0.16.1",
+    "react-tooltip": "^5.28.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -30,6 +34,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "prisma": "^6.7.0",
     "typescript": "^5"
   }
 }

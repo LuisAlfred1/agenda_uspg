@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Tarea" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "texto" TEXT NOT NULL,
+    "categoria" TEXT NOT NULL,
+    "fecha" DATETIME,
+    "creadaEn" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

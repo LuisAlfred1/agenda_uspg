@@ -54,7 +54,7 @@ li:hover{
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-
+/*
 .react-calendar {
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(40px);
@@ -100,7 +100,7 @@ li:hover{
   justify-content: center;
 }
 
-/* Fondo principal del calendario */
+ Fondo principal del calendario
 .fc {
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(40px);
@@ -110,13 +110,13 @@ li:hover{
   border: none;
 }
 
-/* Título del mes/año centrado */
+/* Título del mes/año centrado 
 .fc-toolbar-title {
   font-weight: bold;
   color: white;
 }
 
-/* Botones de navegación (prev/next) */
+/* Botones de navegación (prev/next) 
 .fc-button {
   background: transparent;
   color: white;
@@ -133,7 +133,7 @@ li:hover{
   cursor: pointer;
 }
 
-/* Días en la cuadrícula */
+/* Días en la cuadrícula 
 .fc-daygrid-day {
   background: transparent;
   color: white;
@@ -145,13 +145,13 @@ li:hover{
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Día actual */
+/* Día actual 
 .fc-day-today {
   background: rgba(255, 255, 255, 0.2);
   border: none;
 }
 
-/* Día seleccionado */
+/* Día seleccionado 
 .fc-daygrid-day.fc-day-selected {
   background: #0d6efd;
   color: white;
@@ -161,3 +161,4 @@ li:hover{
 .fc-day{
   color: white;
 }
+*/
