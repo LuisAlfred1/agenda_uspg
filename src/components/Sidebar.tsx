@@ -53,7 +53,7 @@ export default function Sidebar() {
         <ul className="nav flex-column mt-3">
           <li className="nav-item mb-2">
             <Link href="/" className="nav-link text-white">
-              <i className="bi bi-house me-2"></i> Dashboard
+              <i className="bi bi-house me-2"></i> Mi día
             </Link>
           </li>
           <li className="nav-item mb-2">

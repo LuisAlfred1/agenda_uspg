@@ -38,7 +38,6 @@ export default function Tareas() {
     if (res.ok) {
       const nuevaTarea = await res.json();
       console.log("Tarea guardada:", nuevaTarea);
-      alert("Tarea guardada con éxito");
       // Limpiar inputs
       setTexto("");
       setCategoriaSeleccionada("Tarea");
@@ -74,7 +73,7 @@ export default function Tareas() {
   }, []);
 
   return (
-    <div className="d-flex flex-column  overflow-hidden">
+    <div className="d-flex flex-column ">
       {/* Encabezado fijo */}
       <header className="p-3 text-white">
         <h3 className="fw-bold text-shadow-custom">Tareas</h3>
@@ -84,25 +83,23 @@ export default function Tareas() {
       </header>
 
       {/* Centro de la pantalla con scroll si es necesario */}
-      <main
-        className="flex-grow-1 d-flex justify-content-center align-items-center overflow-auto"
-        style={{ paddingBottom: "150px" }}
-      >
+      <main className="flex-grow-1 d-flex justify-content-center overflow-auto">
         {/* Condicionalmente mostrar la imagen o la lista */}
         {!mostrarTareas ? (
           <div
-            className="text-center text-white p-2 mt-5"
+            className="text-center text-white p-2"
             style={{
               background: "rgba(0,0,0,0.4)",
               borderRadius: "10px",
               backdropFilter: "blur(30px)",
-              maxWidth: "220px",
+              maxWidth: "220px",            
+              marginTop: "80px",
             }}
           >
             <img
               src="./task.png"
               alt="tarea"
-              style={{ width: "80px", marginBottom: "20px" }}
+              style={{ width: "80px", marginBottom: "10px" }}
             />
             <h6>Concéntrate en tu día</h6>
             <p className="text-white">
@@ -138,11 +135,13 @@ export default function Tareas() {
 
       {/* Barra inferior fija para agregar tarea */}
       <footer
-        className="d-flex align-items-center justify-content-between text-white p-2 mt-1"
+        className="d-flex align-items-center justify-content-between text-white p-2 mt-4"
         style={{
           background: "rgba(0,0,0,0.5)",
           backdropFilter: "blur(10px)",
           borderRadius: "5px",
+          zIndex: 1000,
+          marginBottom: "0px",
         }}
       >
         <input
@@ -257,6 +256,7 @@ export default function Tareas() {
         .task-list {
           padding: 1rem;
           font-family: "Segoe UI", sans-serif;
+          max-height: calc(100vh - 240px);
         }
 
         .task-item {
