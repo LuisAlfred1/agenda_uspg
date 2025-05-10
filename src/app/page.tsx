@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import HeaderHome from "@/components/Home/headerHome";
 import "bootstrap/dist/css/bootstrap.min.css";
 

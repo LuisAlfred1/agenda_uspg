@@ -12,6 +12,7 @@ export default function Tareas() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Tarea");
   const [fechaSeleccionada, setFechaSeleccionada] = useState<Date | null>(null);
   const [mostrarCalendario, setMostrarCalendario] = useState(false);
+  const [tareaEditando, setTareaEditando] = useState<Tarea | null>(null);
 
   interface Tarea {
     id: number;
@@ -27,7 +28,7 @@ export default function Tareas() {
       fecha: fechaSeleccionada,
     };
 
-    const res = await fetch("/api/tareas", {
+    const res = await fetch("/api/guardarTareas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,6 +73,48 @@ export default function Tareas() {
     fetchTareas();
   }, []);
 
+  async function confirmarEdicion() {
+    if (!tareaEditando) return;
+
+    const res = await fetch("/api/editarTareas", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...tareaEditando,
+        fecha: tareaEditando.fecha ? new Date(tareaEditando.fecha) : null,
+      }),
+    });
+
+    if (res.ok) {
+      fetchTareas();
+      setTareaEditando(null);
+    } else {
+      const error = await res.json();
+      console.error("Error al editar tarea:", error);
+    }
+  }
+
+  async function eliminarTarea(id: number) {
+    try {
+      const res = await fetch("/api/eliminarTareas", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      });
+
+      if (res.ok) {
+        // Actualizar lista después de eliminar
+        fetchTareas();
+      } else {
+        console.error("Error al eliminar la tarea");
+      }
+    } catch (error) {
+      console.error("Error al eliminar tarea:", error);
+    }
+  }
+
   return (
     <div className="d-flex flex-column ">
       {/* Encabezado fijo */}
@@ -92,7 +135,7 @@ export default function Tareas() {
               background: "rgba(0,0,0,0.4)",
               borderRadius: "10px",
               backdropFilter: "blur(30px)",
-              maxWidth: "220px",            
+              maxWidth: "220px",
               marginTop: "80px",
             }}
           >
@@ -115,18 +158,42 @@ export default function Tareas() {
                   <div>
                     <h5>{tarea.texto}</h5>
                     <p className="meta">
-                      {tarea.categoria} &bull;{" "}
-                      {tarea.fecha
-                        ? new Date(tarea.fecha).toLocaleDateString("es-MX", {
+                      <i className="bi bi-tag"></i> {tarea.categoria} &bull;{" "}
+                      {tarea.fecha ? (
+                        <>
+                          <i className="bi bi-calendar"></i>{" "}
+                          {new Date(tarea.fecha).toLocaleDateString("es-MX", {
                             weekday: "short",
                             day: "numeric",
                             month: "short",
-                          })
-                        : "Sin fecha"}
+                          })}
+                        </>
+                      ) : (
+                        "Sin fecha"
+                      )}
                     </p>
                   </div>
                 </div>
-                <span className="star">&#9734;</span> {/* estrella opcional */}
+                <div className="d-flex gap-2">
+                  <button
+                    className="btn text-primary"
+                    data-tooltip-id="tooltipEditar"
+                    data-tooltip-content="Editar"
+                    onClick={() => setTareaEditando(tarea)}
+                  >
+                    <i className="bi bi-pencil-fill"></i>
+                    <Tooltip id="tooltipEditar" place="top" />
+                  </button>
+                  <button
+                    className="btn text-danger"
+                    data-tooltip-id="tooltipEliminar"
+                    data-tooltip-content="Eliminar"
+                    onClick={() => eliminarTarea(tarea.id)}
+                  >
+                    <i className="bi bi-trash3-fill"></i>
+                    <Tooltip id="tooltipEliminar" place="top" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -260,11 +327,12 @@ export default function Tareas() {
         }
 
         .task-item {
-          width: 990px;
+          width: 999px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background: #2d2d2d;
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(40px);
           color: white;
           border-radius: 8px;
           padding: 1rem;
@@ -296,6 +364,93 @@ export default function Tareas() {
           cursor: pointer;
         }
       `}</style>
+
+      {tareaEditando && (
+        <div
+          className="modal show d-block"
+          tabIndex={-1}
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Editar tarea</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setTareaEditando(null)}
+                />
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label className="form-label">Texto</label>
+                  <input
+                    className="form-control"
+                    value={tareaEditando.texto}
+                    onChange={(e) =>
+                      setTareaEditando({
+                        ...tareaEditando,
+                        texto: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Categoría</label>
+                  <select
+                    className="form-select"
+                    value={tareaEditando.categoria}
+                    onChange={(e) =>
+                      setTareaEditando({
+                        ...tareaEditando,
+                        categoria: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="Tarea">Tarea</option>
+                    <option value="Laboral">Laboral</option>
+                    <option value="Importante">Importante</option>
+                  </select>
+                </div>
+
+                <div className="mb-3 d-flex gap-2">
+                  <label className="form-label">Fecha</label>
+                  <DatePicker
+                    className="form-control"
+                    selected={
+                      tareaEditando.fecha ? new Date(tareaEditando.fecha) : null
+                    }
+                    onChange={(date) =>
+                      setTareaEditando({
+                        ...tareaEditando,
+                        fecha: date?.toISOString() ?? null,
+                      })
+                    }
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Selecciona una fecha"
+                  />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  className="btn btn-secondary text-black"
+                  onClick={() => setTareaEditando(null)}
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  className="btn btn-success text-black"
+                  onClick={confirmarEdicion}
+                >
+                  Guardar cambios
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
