@@ -4,6 +4,7 @@ import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 export default function Tareas() {
   const [texto, setTexto] = useState("");
@@ -13,6 +14,8 @@ export default function Tareas() {
   const [fechaSeleccionada, setFechaSeleccionada] = useState<Date | null>(null);
   const [mostrarCalendario, setMostrarCalendario] = useState(false);
   const [tareaEditando, setTareaEditando] = useState<Tarea | null>(null);
+  const [filtroCategoria, setFiltroCategoria] = useState("Todas");
+  const [filtroFecha, setFiltroFecha] = useState<Date | null>(null);
 
   interface Tarea {
     id: number;
@@ -110,23 +113,37 @@ export default function Tareas() {
   }
 
   async function eliminarTarea(id: number) {
-    try {
-      const res = await fetch("/api/eliminarTareas", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
-      });
+    const result = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará la tarea de forma permanente.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    });
 
-      if (res.ok) {
-        // Actualizar lista después de eliminar
-        fetchTareas();
-      } else {
-        console.error("Error al eliminar la tarea");
+    if (result.isConfirmed) {
+      try {
+        const res = await fetch("/api/eliminarTareas", {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id }),
+        });
+
+        if (res.ok) {
+          Swal.fire("¡Eliminada!", "La tarea ha sido eliminada.", "success");
+          fetchTareas(); // Recargar lista
+        } else {
+          Swal.fire("Error", "No se pudo eliminar la tarea.", "error");
+        }
+      } catch (error) {
+        console.error("Error al eliminar tarea:", error);
+        Swal.fire("Error", "Ocurrió un error al eliminar la tarea.", "error");
       }
-    } catch (error) {
-      console.error("Error al eliminar tarea:", error);
     }
   }
 
@@ -330,6 +347,18 @@ export default function Tareas() {
               </ul>
             </div>
             <Tooltip id="tooltipCat" place="top" />
+            <button
+              className="text-white btn btn"
+              data-tooltip-id="toolGuardar"
+              data-tooltip-content={"Guardar"}
+              onClick={() => {
+                guardarTarea();
+                setMostrarTareas(true);
+              }}
+            >
+              <i className="bi bi-check2"></i>
+            </button>
+            <Tooltip id="toolGuardar" place="top" />
           </div>
         )}
       </footer>
@@ -399,8 +428,8 @@ export default function Tareas() {
           cursor: pointer;
         }
         .form-check-input {
-          width: 1rem;
-          height: 1rem;
+          width: 1.2rem;
+          height: 1.2rem;
           border-radius: 50%;
           cursor: pointer;
           background-color: rgb(238, 232, 232);

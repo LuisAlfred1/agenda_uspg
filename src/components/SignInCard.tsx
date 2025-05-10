@@ -19,10 +19,18 @@ export default function SignInPage() {
           <Lottie
             animationData={libros}
             loop={true}
-            style={{ width: "300px", height: "300px" }}
+            style={{
+              width: "300px",
+              height: "300px",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "0 auto",
+            }}
           />
-          <h1 className="mt-3">Digital Planner</h1>
-          <p className="lead text-center px-3">Organiza tu día como un pro</p>
+          <h1 className="mt-3">USPG Agenda</h1>
+          <p className="lead text-center px-3">
+            Organiza tus tareas de manera eficiente y sencilla.
+          </p>
         </div>
       </div>
 
