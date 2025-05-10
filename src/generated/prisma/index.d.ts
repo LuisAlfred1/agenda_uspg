@@ -895,6 +895,7 @@ export namespace Prisma {
     categoria: string | null
     fecha: Date | null
     creadaEn: Date | null
+    completada: boolean | null
   }
 
   export type TareaMaxAggregateOutputType = {
@@ -903,6 +904,7 @@ export namespace Prisma {
     categoria: string | null
     fecha: Date | null
     creadaEn: Date | null
+    completada: boolean | null
   }
 
   export type TareaCountAggregateOutputType = {
@@ -911,6 +913,7 @@ export namespace Prisma {
     categoria: number
     fecha: number
     creadaEn: number
+    completada: number
     _all: number
   }
 
@@ -929,6 +932,7 @@ export namespace Prisma {
     categoria?: true
     fecha?: true
     creadaEn?: true
+    completada?: true
   }
 
   export type TareaMaxAggregateInputType = {
@@ -937,6 +941,7 @@ export namespace Prisma {
     categoria?: true
     fecha?: true
     creadaEn?: true
+    completada?: true
   }
 
   export type TareaCountAggregateInputType = {
@@ -945,6 +950,7 @@ export namespace Prisma {
     categoria?: true
     fecha?: true
     creadaEn?: true
+    completada?: true
     _all?: true
   }
 
@@ -1040,6 +1046,7 @@ export namespace Prisma {
     categoria: string
     fecha: Date | null
     creadaEn: Date
+    completada: boolean
     _count: TareaCountAggregateOutputType | null
     _avg: TareaAvgAggregateOutputType | null
     _sum: TareaSumAggregateOutputType | null
@@ -1067,6 +1074,7 @@ export namespace Prisma {
     categoria?: boolean
     fecha?: boolean
     creadaEn?: boolean
+    completada?: boolean
   }, ExtArgs["result"]["tarea"]>
 
   export type TareaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1075,6 +1083,7 @@ export namespace Prisma {
     categoria?: boolean
     fecha?: boolean
     creadaEn?: boolean
+    completada?: boolean
   }, ExtArgs["result"]["tarea"]>
 
   export type TareaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1083,6 +1092,7 @@ export namespace Prisma {
     categoria?: boolean
     fecha?: boolean
     creadaEn?: boolean
+    completada?: boolean
   }, ExtArgs["result"]["tarea"]>
 
   export type TareaSelectScalar = {
@@ -1091,9 +1101,10 @@ export namespace Prisma {
     categoria?: boolean
     fecha?: boolean
     creadaEn?: boolean
+    completada?: boolean
   }
 
-  export type TareaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "texto" | "categoria" | "fecha" | "creadaEn", ExtArgs["result"]["tarea"]>
+  export type TareaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "texto" | "categoria" | "fecha" | "creadaEn" | "completada", ExtArgs["result"]["tarea"]>
 
   export type $TareaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Tarea"
@@ -1104,6 +1115,7 @@ export namespace Prisma {
       categoria: string
       fecha: Date | null
       creadaEn: Date
+      completada: boolean
     }, ExtArgs["result"]["tarea"]>
     composites: {}
   }
@@ -1532,6 +1544,7 @@ export namespace Prisma {
     readonly categoria: FieldRef<"Tarea", 'String'>
     readonly fecha: FieldRef<"Tarea", 'DateTime'>
     readonly creadaEn: FieldRef<"Tarea", 'DateTime'>
+    readonly completada: FieldRef<"Tarea", 'Boolean'>
   }
     
 
@@ -1912,7 +1925,8 @@ export namespace Prisma {
     texto: 'texto',
     categoria: 'categoria',
     fecha: 'fecha',
-    creadaEn: 'creadaEn'
+    creadaEn: 'creadaEn',
+    completada: 'completada'
   };
 
   export type TareaScalarFieldEnum = (typeof TareaScalarFieldEnum)[keyof typeof TareaScalarFieldEnum]
@@ -1961,6 +1975,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1979,6 +2000,7 @@ export namespace Prisma {
     categoria?: StringFilter<"Tarea"> | string
     fecha?: DateTimeNullableFilter<"Tarea"> | Date | string | null
     creadaEn?: DateTimeFilter<"Tarea"> | Date | string
+    completada?: BoolFilter<"Tarea"> | boolean
   }
 
   export type TareaOrderByWithRelationInput = {
@@ -1987,6 +2009,7 @@ export namespace Prisma {
     categoria?: SortOrder
     fecha?: SortOrderInput | SortOrder
     creadaEn?: SortOrder
+    completada?: SortOrder
   }
 
   export type TareaWhereUniqueInput = Prisma.AtLeast<{
@@ -1998,6 +2021,7 @@ export namespace Prisma {
     categoria?: StringFilter<"Tarea"> | string
     fecha?: DateTimeNullableFilter<"Tarea"> | Date | string | null
     creadaEn?: DateTimeFilter<"Tarea"> | Date | string
+    completada?: BoolFilter<"Tarea"> | boolean
   }, "id">
 
   export type TareaOrderByWithAggregationInput = {
@@ -2006,6 +2030,7 @@ export namespace Prisma {
     categoria?: SortOrder
     fecha?: SortOrderInput | SortOrder
     creadaEn?: SortOrder
+    completada?: SortOrder
     _count?: TareaCountOrderByAggregateInput
     _avg?: TareaAvgOrderByAggregateInput
     _max?: TareaMaxOrderByAggregateInput
@@ -2022,6 +2047,7 @@ export namespace Prisma {
     categoria?: StringWithAggregatesFilter<"Tarea"> | string
     fecha?: DateTimeNullableWithAggregatesFilter<"Tarea"> | Date | string | null
     creadaEn?: DateTimeWithAggregatesFilter<"Tarea"> | Date | string
+    completada?: BoolWithAggregatesFilter<"Tarea"> | boolean
   }
 
   export type TareaCreateInput = {
@@ -2029,6 +2055,7 @@ export namespace Prisma {
     categoria: string
     fecha?: Date | string | null
     creadaEn?: Date | string
+    completada?: boolean
   }
 
   export type TareaUncheckedCreateInput = {
@@ -2037,6 +2064,7 @@ export namespace Prisma {
     categoria: string
     fecha?: Date | string | null
     creadaEn?: Date | string
+    completada?: boolean
   }
 
   export type TareaUpdateInput = {
@@ -2044,6 +2072,7 @@ export namespace Prisma {
     categoria?: StringFieldUpdateOperationsInput | string
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadaEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    completada?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TareaUncheckedUpdateInput = {
@@ -2052,6 +2081,7 @@ export namespace Prisma {
     categoria?: StringFieldUpdateOperationsInput | string
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadaEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    completada?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TareaCreateManyInput = {
@@ -2060,6 +2090,7 @@ export namespace Prisma {
     categoria: string
     fecha?: Date | string | null
     creadaEn?: Date | string
+    completada?: boolean
   }
 
   export type TareaUpdateManyMutationInput = {
@@ -2067,6 +2098,7 @@ export namespace Prisma {
     categoria?: StringFieldUpdateOperationsInput | string
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadaEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    completada?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type TareaUncheckedUpdateManyInput = {
@@ -2075,6 +2107,7 @@ export namespace Prisma {
     categoria?: StringFieldUpdateOperationsInput | string
     fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     creadaEn?: DateTimeFieldUpdateOperationsInput | Date | string
+    completada?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2124,6 +2157,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -2135,6 +2173,7 @@ export namespace Prisma {
     categoria?: SortOrder
     fecha?: SortOrder
     creadaEn?: SortOrder
+    completada?: SortOrder
   }
 
   export type TareaAvgOrderByAggregateInput = {
@@ -2147,6 +2186,7 @@ export namespace Prisma {
     categoria?: SortOrder
     fecha?: SortOrder
     creadaEn?: SortOrder
+    completada?: SortOrder
   }
 
   export type TareaMinOrderByAggregateInput = {
@@ -2155,6 +2195,7 @@ export namespace Prisma {
     categoria?: SortOrder
     fecha?: SortOrder
     creadaEn?: SortOrder
+    completada?: SortOrder
   }
 
   export type TareaSumOrderByAggregateInput = {
@@ -2222,6 +2263,14 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2232,6 +2281,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2287,6 +2340,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2370,6 +2428,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
 

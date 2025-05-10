@@ -2,9 +2,38 @@
 
 import HeaderHome from "@/components/Home/headerHome";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+
+interface Tarea {
+  id: number;
+  texto: string;
+  categoria: string;
+  fecha: string | null;
+  completada?: boolean;
+}
 
 export default function HomePage() {
-  
+  const [tareas, setTareas] = useState<Tarea[]>([]);
+  const [completadas, setCompletadas] = useState(0);
+  const [pendientes, setPendientes] = useState(0);
+
+  useEffect(() => {
+    async function fetchTareas() {
+      try {
+        const res = await fetch("/api/obtenerTareas");
+        const text = await res.text();
+        const data: Tarea[] = text ? JSON.parse(text) : [];
+
+        setTareas(data);
+        setCompletadas(data.filter((t) => t.completada).length);
+        setPendientes(data.filter((t) => !t.completada).length);
+      } catch (error) {
+        console.error("Error al obtener tareas:", error);
+      }
+    }
+
+    fetchTareas();
+  }, []);
 
   return (
     <>
@@ -24,7 +53,7 @@ export default function HomePage() {
               }}
             >
               <div className="text-white text-center mb-4">
-                <h1 className="display-4 fw-bold">0</h1>
+                <h1 className="display-4 fw-bold">{completadas}</h1>
                 <p className="mb-0 fs-5">Tareas completadas</p>
               </div>
             </div>
@@ -42,7 +71,7 @@ export default function HomePage() {
               }}
             >
               <div className="text-white text-center mb-4">
-                <h1 className="display-4 fw-bold">0</h1>
+                <h1 className="display-4 fw-bold">{pendientes}</h1>
                 <p className="mb-0 fs-5">Tareas pendientes</p>
               </div>
             </div>

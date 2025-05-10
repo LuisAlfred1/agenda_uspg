@@ -20,4 +20,5 @@ model Tarea {
   categoria String
   fecha     DateTime?
   creadaEn  DateTime @default(now())
+  completada Boolean  @default(false)
 }

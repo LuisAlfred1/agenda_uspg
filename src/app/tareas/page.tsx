@@ -19,6 +19,7 @@ export default function Tareas() {
     texto: string;
     categoria: string;
     fecha: string | null; // O Date dependiendo de cómo lo manejes
+    completada?: boolean;
   }
 
   async function guardarTarea() {
@@ -94,6 +95,20 @@ export default function Tareas() {
     }
   }
 
+  async function marcarCompletada(id: number, completada: boolean) {
+    const res = await fetch("/api/completarTareas", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, completada }),
+    });
+
+    if (res.ok) {
+      fetchTareas(); // Recarga tareas actualizadas
+    } else {
+      console.error("Error al marcar como completada");
+    }
+  }
+
   async function eliminarTarea(id: number) {
     try {
       const res = await fetch("/api/eliminarTareas", {
@@ -154,9 +169,28 @@ export default function Tareas() {
             {tareas.map((tarea) => (
               <div className="task-item" key={tarea.id}>
                 <div className="task-left">
-                  <span className="circle"></span>
+                  <input
+                    type="checkbox"
+                    className="form-check-input me-2"
+                    data-tooltip-id="tooltipCompletada"
+                    data-tooltip-content="Marcar"
+                    checked={tarea.completada}
+                    onChange={() =>
+                      marcarCompletada(tarea.id, !tarea.completada)
+                    }
+                  />
+                  <Tooltip id="tooltipCompletada" place="top" />
                   <div>
-                    <h5>{tarea.texto}</h5>
+                    <h5
+                      style={{
+                        textDecoration: tarea.completada
+                          ? "line-through"
+                          : "none",
+                        color: tarea.completada ? "#aaa" : "white",
+                      }}
+                    >
+                      {tarea.texto}
+                    </h5>
                     <p className="meta">
                       <i className="bi bi-tag"></i> {tarea.categoria} &bull;{" "}
                       {tarea.fecha ? (
@@ -174,6 +208,7 @@ export default function Tareas() {
                     </p>
                   </div>
                 </div>
+
                 <div className="d-flex gap-2">
                   <button
                     className="btn text-primary"
@@ -362,6 +397,21 @@ export default function Tareas() {
           font-size: 1.2rem;
           color: #777;
           cursor: pointer;
+        }
+        .form-check-input {
+          width: 1rem;
+          height: 1rem;
+          border-radius: 50%;
+          cursor: pointer;
+          background-color: rgb(238, 232, 232);
+        }
+        .form-check-input:hover {
+          background-color: #28a745;
+          border-color: #28a745;
+        }
+        .form-check-input:checked {
+          background-color: #28a745;
+          border-color: #28a745;
         }
       `}</style>
 

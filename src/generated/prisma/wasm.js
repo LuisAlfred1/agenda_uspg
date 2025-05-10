@@ -122,7 +122,8 @@ exports.Prisma.TareaScalarFieldEnum = {
   texto: 'texto',
   categoria: 'categoria',
   fecha: 'fecha',
-  creadaEn: 'creadaEn'
+  creadaEn: 'creadaEn',
+  completada: 'completada'
 };
 
 exports.Prisma.SortOrder = {

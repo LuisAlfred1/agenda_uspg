@@ -15,9 +15,10 @@ datasource db {
 }
 
 model Tarea {
-  id        Int       @id @default(autoincrement())
-  texto     String
-  categoria String
-  fecha     DateTime?
-  creadaEn  DateTime  @default(now())
+  id         Int       @id @default(autoincrement())
+  texto      String
+  categoria  String
+  fecha      DateTime?
+  creadaEn   DateTime  @default(now())
+  completada Boolean   @default(false)
 }
