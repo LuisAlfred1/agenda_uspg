@@ -92,8 +92,8 @@ export default function HomePage() {
               <div className="text-white text-center mb-4">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className="fs-5">
-                    <i className="bi bi-journal-arrow-down"></i> Tareas para los
-                    proximos 6 días{" "}
+                    Tareas para los proximos 6 días{" "}
+                    <i className="bi bi-caret-down-fill"></i>
                   </p>
                   <Link
                     href="/calendario"

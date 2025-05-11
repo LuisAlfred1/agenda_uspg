@@ -14,7 +14,7 @@ export default function Tareas() {
   const [fechaSeleccionada, setFechaSeleccionada] = useState<Date | null>(null);
   const [mostrarCalendario, setMostrarCalendario] = useState(false);
   const [tareaEditando, setTareaEditando] = useState<Tarea | null>(null);
-  const [filtroCategoria, setFiltroCategoria] = useState("Todas");
+  const [filtroCategoria, setFiltroCategoria] = useState<string | null>(null);
   const [filtroFecha, setFiltroFecha] = useState<Date | null>(null);
 
   interface Tarea {
@@ -22,7 +22,14 @@ export default function Tareas() {
     texto: string;
     categoria: string;
     fecha: string | null; // O Date dependiendo de cómo lo manejes
+    creadaEn: string;
     completada?: boolean;
+  }
+
+  function normalizarFecha(fecha: Date) {
+    const f = new Date(fecha);
+    f.setHours(0, 0, 0, 0);
+    return f;
   }
 
   async function guardarTarea() {
@@ -63,10 +70,45 @@ export default function Tareas() {
       }
 
       const text = await res.text();
-      const data = text ? JSON.parse(text) : [];
+      const data: Tarea[] = text ? JSON.parse(text) : [];
 
-      setTareas(data);
-      setMostrarTareas(data.length > 0); // importante para mostrar lista si hay tareas
+      const hoy = normalizarFecha(new Date());
+
+      const tareasNoVencidas = data.filter((tarea) => {
+        if (!tarea.fecha) {
+          const creada = new Date(tarea.creadaEn);
+          const ahora = new Date();
+          const tiempoPasado = ahora.getTime() - creada.getTime();
+          return tiempoPasado < 24 * 60 * 60 * 1000; // Menos de 24 horas
+        }
+
+        const fechaTarea = normalizarFecha(new Date(tarea.fecha));
+        return fechaTarea >= hoy;
+      });
+
+      const tareasVencidas = data.filter((tarea) => {
+        if (!tarea.fecha) {
+          const creada = new Date(tarea.creadaEn);
+          const ahora = new Date();
+          const tiempoPasado = ahora.getTime() - creada.getTime();
+          return tiempoPasado >= 24 * 60 * 60 * 1000;
+        }
+
+        const fechaTarea = normalizarFecha(new Date(tarea.fecha));
+        return fechaTarea < hoy;
+      });
+
+      // Eliminar tareas vencidas
+      for (const tarea of tareasVencidas) {
+        await fetch("/api/eliminarTareas", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: tarea.id }),
+        });
+      }
+
+      setTareas(tareasNoVencidas);
+      setMostrarTareas(tareasNoVencidas.length > 0); // importante para mostrar lista si hay tareas
     } catch (error) {
       console.error("Error al obtener tareas:", error);
       setTareas([]);
@@ -147,6 +189,18 @@ export default function Tareas() {
     }
   }
 
+  const tareasFiltradas = tareas.filter((tarea) => {
+    const coincideCategoria =
+      !filtroCategoria || tarea.categoria === filtroCategoria;
+
+    const coincideFecha =
+      !filtroFecha ||
+      (tarea.fecha &&
+        new Date(tarea.fecha).toDateString() === filtroFecha.toDateString());
+
+    return coincideCategoria && coincideFecha;
+  });
+
   return (
     <div className="d-flex flex-column ">
       {/* Encabezado fijo */}
@@ -155,6 +209,47 @@ export default function Tareas() {
         <p className="fs-6 text-shadow-custom">
           Agrega tus tareas y empieza a organizarlas.
         </p>
+        <div className="d-flex align-items-center gap-3">
+          <div className="d-flex gap-2">
+            <label className="mb-0 text-shadow-custom" htmlFor="categoria">
+              Categoría:
+            </label>
+            <select
+              id="categoria"
+              value={filtroCategoria || ""}
+              onChange={(e) => setFiltroCategoria(e.target.value || null)}
+              className="form-select form-select-sm"
+            >
+              <option value="">Todas</option>
+              <option value="Tarea">Tarea</option>
+              <option value="Laboral">Laboral</option>
+              <option value="Importante">Importante</option>
+            </select>
+          </div>
+
+          <div className="d-flex gap-2">
+            <label className="mb-0 text-shadow-custom" htmlFor="fecha">
+              Fecha:
+            </label>
+            <DatePicker
+              id="fecha"
+              selected={filtroFecha}
+              onChange={(date) => setFiltroFecha(date)}
+              placeholderText="Filtrar por fecha"
+              className="form-control form-control-sm"
+            />
+          </div>
+
+          <button
+            onClick={() => {
+              setFiltroFecha(null);
+              setFiltroCategoria(null);
+            }}
+            className="btn btnFiltrar ms-3"
+          >
+            Limpiar filtros
+          </button>
+        </div>
       </header>
 
       {/* Centro de la pantalla con scroll si es necesario */}
@@ -183,7 +278,7 @@ export default function Tareas() {
           </div>
         ) : (
           <div className="task-list overflow-auto">
-            {tareas.map((tarea) => (
+            {tareasFiltradas.map((tarea) => (
               <div className="task-item" key={tarea.id}>
                 <div className="task-left">
                   <input
@@ -387,9 +482,8 @@ export default function Tareas() {
         .task-list {
           padding: 1rem;
           font-family: "Segoe UI", sans-serif;
-          max-height: calc(100vh - 240px);
+          max-height: calc(100vh - 260px);
         }
-
         .task-item {
           width: 999px;
           display: flex;
@@ -441,6 +535,16 @@ export default function Tareas() {
         .form-check-input:checked {
           background-color: #28a745;
           border-color: #28a745;
+        }
+        .btnFiltrar {
+          background: rgba(0, 0, 0, 0.4);
+          backdrop-filter: blur(10px);
+          color: white;
+        }
+        .btnFiltrar:hover {
+          background: rgba(0, 0, 0, 0.6);
+          backdrop-filter: blur(10px);
+          color: white;
         }
       `}</style>
 
