@@ -1,0 +1,17 @@
+-- CreateTable
+CREATE TABLE "Carpeta" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "nombre" TEXT NOT NULL,
+    "creadaEn" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Nota" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "titulo" TEXT NOT NULL,
+    "contenido" TEXT NOT NULL,
+    "carpetaId" INTEGER NOT NULL,
+    "creadaEn" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "actualizadaEn" DATETIME NOT NULL,
+    CONSTRAINT "Nota_carpetaId_fkey" FOREIGN KEY ("carpetaId") REFERENCES "Carpeta" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);

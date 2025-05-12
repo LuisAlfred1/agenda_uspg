@@ -349,13 +349,14 @@ export default function Tareas() {
 
       {/* Barra inferior fija para agregar tarea */}
       <footer
-        className="d-flex align-items-center justify-content-between text-white p-2 mt-4"
+        className="d-flex align-items-center justify-content-between text-white p-2 position-fixed"
         style={{
           background: "rgba(0,0,0,0.5)",
           backdropFilter: "blur(10px)",
           borderRadius: "5px",
           zIndex: 1000,
-          marginBottom: "0px",
+          width: "78%",
+          marginTop: "520px",
         }}
       >
         <input
