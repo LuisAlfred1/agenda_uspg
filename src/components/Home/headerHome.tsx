@@ -1,13 +1,76 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { signOut } from "next-auth/react";
 
+interface Tarea {
+  id: number;
+  texto: string;
+  categoria: string;
+  fecha: string; // Formato ISO
+  completada?: boolean;
+}
+
 export default function HeaderHome() {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [tareas, setTareas] = useState<Tarea[]>([]);
+  const [mostrarDropdown, setMostrarDropdown] = useState(false);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setMostrarDropdown(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const toggleDropdown = () => {
+    setMostrarDropdown(!mostrarDropdown);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(interval); // limpiar al desmontar
   }, []);
   const [hover, setHover] = useState(false);
+
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+
+  const tareasVencidas = tareas.filter((t) => {
+    const fechaTarea = new Date(t.fecha);
+    fechaTarea.setHours(0, 0, 0, 0);
+    return fechaTarea < hoy && !t.completada;
+  });
+
+  const tareasDeHoy = tareas.filter((t) => {
+    const fechaTarea = new Date(t.fecha);
+    fechaTarea.setHours(0, 0, 0, 0);
+    return fechaTarea.getTime() === hoy.getTime() && !t.completada;
+  });
+
+  useEffect(() => {
+    async function fetchTareas() {
+      try {
+        const res = await fetch("/api/obtenerTareas");
+        const text = await res.text();
+        const data: Tarea[] = text ? JSON.parse(text) : [];
+        console.log(data);
+        setTareas(data.filter((t) => t.fecha)); // Asegurarse de que tenga fecha
+      } catch (error) {
+        console.error("Error al cargar las tareas:", error);
+      }
+    }
+
+    fetchTareas();
+  }, []);
 
   return (
     <header
@@ -41,9 +104,61 @@ export default function HeaderHome() {
         {/* Botones a la derecha */}
         <div className="d-flex align-items-center gap-3">
           {/*Boton de notificaciones de recordatiorios de tareas */}
-          <button className="btn btn" title="Notificaciones">
-            <i className="bi bi-bell-fill fs-5"></i>
-          </button>
+          <div className="position-relative" ref={dropdownRef}>
+            <button
+              className="btn btn"
+              title="Notificaciones"
+              onClick={toggleDropdown}
+            >
+              <i className="bi bi-bell-fill fs-5"></i>
+              {tareasVencidas.length + tareasDeHoy.length > 0 && (
+                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {tareasVencidas.length + tareasDeHoy.length}
+                </span>
+              )}
+            </button>
+
+            {mostrarDropdown && (
+              <div
+                className="dropdown-menu show p-3"
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  top: "100%",
+                  minWidth: "250px",
+                }}
+              >
+                <h6 className="dropdown-header">Tareas de Hoy</h6>
+                {tareasDeHoy.length > 0 ? (
+                  tareasDeHoy.map((t) => (
+                    <div key={t.id} className="dropdown-item text-wrap">
+                      {t.texto}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item text-muted">
+                    Ninguna tarea para hoy
+                  </div>
+                )}
+                <div className="dropdown-divider"></div>
+                <h6 className="dropdown-header">Tareas Vencidas</h6>
+                {tareasVencidas.length > 0 ? (
+                  tareasVencidas.map((t) => (
+                    <div
+                      key={t.id}
+                      className="dropdown-item text-wrap text-danger"
+                    >
+                      {t.texto}
+                    </div>
+                  ))
+                ) : (
+                  <div className="dropdown-item text-muted">
+                    No hay tareas vencidas
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
           {/* Botón de cerrar sesión*/}
           <button
             className="btn btn-toogle w-100"
