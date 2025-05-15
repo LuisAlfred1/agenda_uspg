@@ -38,7 +38,7 @@ Es una aplicación web construida con **Next.js** que permite a los usuarios ges
 
 ---
 
-## Instalación 
+## ⚙️ Instalación 
 
 Para instalar y configurar el proyecto, sigue estos pasos:
 
