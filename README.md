@@ -9,7 +9,7 @@ Agenda USPG es una aplicación web construida con Next.js que permite a los usua
 
 
 ## Pagina principal con informacion de tares y notificaciones
-![image](https://github.com/user-attachments/assets/c5316ead-986b-4fb5-9457-18c44e9d1bf3)
+![image](https://github.com/user-attachments/assets/0760c732-7fd3-4c9f-9dba-29481a777e78)
 
 # To do list Tareas
 ![image](https://github.com/user-attachments/assets/318c1a93-69df-4408-962a-f43677670013)
