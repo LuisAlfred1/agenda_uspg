@@ -4,7 +4,7 @@ Es una aplicación web construida con **Next.js** que permite a los usuarios ges
 
 ---
 
-## ✨ Funcionalidades principales
+## 👌 Funcionalidades principales
 
 - 🔐 Autenticación con Google
 - ✅ Crear, editar, completar y eliminar tareas
