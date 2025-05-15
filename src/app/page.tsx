@@ -1,11 +1,40 @@
 "use client";
 
-import { useState } from "react";
 import HeaderHome from "@/components/Home/headerHome";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+interface Tarea {
+  id: number;
+  texto: string;
+  categoria: string;
+  fecha: string | null;
+  completada?: boolean;
+}
 
 export default function HomePage() {
-  
+  const [tareas, setTareas] = useState<Tarea[]>([]);
+  const [completadas, setCompletadas] = useState(0);
+  const [pendientes, setPendientes] = useState(0);
+
+  useEffect(() => {
+    async function fetchTareas() {
+      try {
+        const res = await fetch("/api/obtenerTareas");
+        const text = await res.text();
+        const data: Tarea[] = text ? JSON.parse(text) : [];
+
+        setTareas(data);
+        setCompletadas(data.filter((t) => t.completada).length);
+        setPendientes(data.filter((t) => !t.completada).length);
+      } catch (error) {
+        console.error("Error al obtener tareas:", error);
+      }
+    }
+
+    fetchTareas();
+  }, []);
 
   return (
     <>
@@ -25,7 +54,7 @@ export default function HomePage() {
               }}
             >
               <div className="text-white text-center mb-4">
-                <h1 className="display-4 fw-bold">0</h1>
+                <h1 className="display-4 fw-bold">{completadas}</h1>
                 <p className="mb-0 fs-5">Tareas completadas</p>
               </div>
             </div>
@@ -43,7 +72,7 @@ export default function HomePage() {
               }}
             >
               <div className="text-white text-center mb-4">
-                <h1 className="display-4 fw-bold">0</h1>
+                <h1 className="display-4 fw-bold">{pendientes}</h1>
                 <p className="mb-0 fs-5">Tareas pendientes</p>
               </div>
             </div>
@@ -61,7 +90,96 @@ export default function HomePage() {
               }}
             >
               <div className="text-white text-center mb-4">
-                <p className="mb-0 fs-5">Tareas para los proximos 7 días ⬇️</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <p className="fs-5">
+                    Tareas para los proximos 6 días{" "}
+                    <i className="bi bi-caret-down-fill"></i>
+                  </p>
+                  <Link
+                    href="/calendario"
+                    className="btn text-white"
+                    style={{ border: "none", background: "rgba(0, 0, 0, 0.2)" }}
+                  >
+                    <i className="bi bi-calendar-event"></i> Ver calendario
+                  </Link>
+                </div>
+
+                <div className="row text-white mt-4">
+                  {Array.from({ length: 6 }).map((_, i) => {
+                    const fecha = new Date();
+                    fecha.setDate(fecha.getDate() + i);
+                    const tareasDelDia = tareas.filter((t) => {
+                      if (!t.fecha) return false;
+                      const fechaTarea = new Date(t.fecha);
+                      return (
+                        fechaTarea.getDate() === fecha.getDate() &&
+                        fechaTarea.getMonth() === fecha.getMonth() &&
+                        fechaTarea.getFullYear() === fecha.getFullYear()
+                      );
+                    });
+
+                    return (
+                      <div key={i} className="col-md-4 mb-3">
+                        <div
+                          style={{
+                            background:
+                              tareasDelDia.length > 0
+                                ? "rgba(0, 0, 0, 0.4)"
+                                : "rgba(255, 255, 255, 0.05)",
+                            borderColor: 
+                              tareasDelDia.length > 0
+                                ? "rgba(255, 255, 255, 0.2)"
+                                : "rgba(255, 255, 255, 0.05)",
+                            borderRadius: "10px",
+                            padding: "10px",
+                            minHeight: "100px",
+                            cursor: "pointer",
+                          }}
+                          className="text-center d-flex flex-column  align-items-center"
+                        >
+                          <h6 className="fw-bold">
+                            {fecha.toLocaleDateString("es-MX", {
+                              weekday: "short",
+                              day: "numeric",
+                              month: "short",
+                            })}
+                          </h6>
+
+                          {tareasDelDia.length > 0 ? (
+                            tareasDelDia.map((t) => (
+                              <div
+                                key={t.id}
+                                style={{
+                                  textDecoration: t.completada
+                                    ? "line-through"
+                                    : "none",
+                                  color: t.completada ? "#aaa" : "#white",
+                                  fontWeight: t.completada ? "normal" : "bold",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                  whiteSpace: "nowrap",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                  maxWidth: "220px", // ajusta este valor según tu diseño
+                                }}
+                              >
+                                {t.texto}
+                              </div>
+                            ))
+                          ) : (
+                            <div
+                              className=""
+                              style={{ fontSize: "1rem", color: "#b0bec5" }}
+                            >
+                              No hay tareas
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -76,6 +194,14 @@ export default function HomePage() {
           .custom-input:focus {
             outline: none;
             box-shadow: none;
+          }
+          .boton {
+            border: none;
+            background: rgba(0, 0, 0, 0.2);
+          }
+          .boton:hover {
+            border: none;
+            background: rgba(0, 0, 0, 0.4);
           }
         `}</style>
       </main>

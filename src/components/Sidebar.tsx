@@ -2,12 +2,44 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function Sidebar() {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
+  const [notificaciones, setNotificaciones] = useState(0);
+
+  useEffect(() => {
+    if (!session?.user) return;
+
+    async function obtenerNotificaciones() {
+      try {
+        const res = await fetch("/api/obtenerTareas");
+        const data = await res.json();
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+
+        const tareasRelevantes = data.filter((t: any) => {
+          const fecha = new Date(t.fecha);
+          fecha.setHours(0, 0, 0, 0);
+          return (
+            !t.completada && (fecha.getTime() === hoy.getTime() || fecha < hoy)
+          );
+        });
+
+        setNotificaciones(tareasRelevantes.length);
+      } catch (error) {
+        console.error("Error cargando tareas para notificación", error);
+      }
+    }
+
+    obtenerNotificaciones(); // Cargar inicialmente
+
+    const interval = setInterval(obtenerNotificaciones, 1000); // Cada minuto
+
+    return () => clearInterval(interval); // Limpiar al desmontar
+  }, [session]);
 
   if (!session?.user) return null;
 
@@ -27,12 +59,7 @@ export default function Sidebar() {
           transition: "all 0.3s ease",
         }}
       >
-        <div className="d-flex justify-content-end mb-1">
-          <button className="btn" style={{ color: "white", border: "none" }}>
-            <i className="bi bi-gear fs-5"></i>
-          </button>
-        </div>
-        <div className="text-center mb-4 mt-1">
+        <div className="text-center mb-4 mt-5">
           <div
             className="d-flex justify-content-center align-items-center text-center mb-2"
             style={{
@@ -52,8 +79,16 @@ export default function Sidebar() {
 
         <ul className="nav flex-column mt-3">
           <li className="nav-item mb-2">
-            <Link href="/" className="nav-link text-white">
-              <i className="bi bi-house me-2"></i> Dashboard
+            <Link
+              href="/"
+              className="nav-link text-white d-flex align-items-center justify-content-between"
+            >
+              <span>
+                <i className="bi bi-house me-2"></i> Mi día
+              </span>
+              {notificaciones > 0 && (
+                <span className="badge bg-danger ms-2">{notificaciones}</span>
+              )}
             </Link>
           </li>
           <li className="nav-item mb-2">
