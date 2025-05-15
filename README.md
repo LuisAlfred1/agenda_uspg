@@ -75,6 +75,7 @@ npm run dev
 
 Abre tu navegador e ingresa a: `http://localhost:3000`, y listo.
 
-## Licencia
+## 🚧 Estado del despliegue
 
-Este proyecto tiene licencia MIT. Para más detalles, consultá el archivo [LICENSE](LICENSE).
+❌ La aplicación web no pudo ser desplegada correctamente debido a errores en el entorno de despliegue.  
+Estamos trabajando para resolver el problema y restablecer el acceso lo antes posible. Ofrecemos disculpas por los inconvenientes.
