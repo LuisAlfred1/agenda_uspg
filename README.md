@@ -24,13 +24,13 @@ Para instalar y configurar el proyecto, seguí estos pasos:
 1. Cloná el repositorio:
 
    ```bash
-   git clone https://github.com/fleonel/uspg_av.git
+   https://github.com/LuisAlfred1/agenda_uspg.git
    ```
 
 2. Navegá al directorio del proyecto:
 
    ```bash
-   cd uspg_av
+   cd agenda_uspg
    ```
 
 3. Instalá las dependencias:
