@@ -27,12 +27,8 @@ export default function Sidebar() {
           transition: "all 0.3s ease",
         }}
       >
-        <div className="d-flex justify-content-end mb-1">
-          <button className="btn" style={{ color: "white", border: "none" }}>
-            <i className="bi bi-gear fs-5"></i>
-          </button>
-        </div>
-        <div className="text-center mb-4 mt-1">
+
+        <div className="text-center mb-4 mt-5">
           <div
             className="d-flex justify-content-center align-items-center text-center mb-2"
             style={{
