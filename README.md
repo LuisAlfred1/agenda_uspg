@@ -20,9 +20,15 @@ Es una aplicación web construida con **Next.js** que permite a los usuarios ges
 
 ---
 
-## 🏠 Página principal con información y notificaciones
+## 🏠 Página principal con información de las tareas creadas
 
 ![Inicio](https://github.com/user-attachments/assets/0760c732-7fd3-4c9f-9dba-29481a777e78)
+
+---
+
+## 🔔 Notificaciones
+
+![image](https://github.com/user-attachments/assets/576806c0-0877-4c65-96ad-9227a6d369ec)
 
 ---
 
