@@ -122,10 +122,18 @@ export default function HomePage() {
                       <div key={i} className="col-md-4 mb-3">
                         <div
                           style={{
-                            background: "rgba(255, 255, 255, 0.05)",
+                            background:
+                              tareasDelDia.length > 0
+                                ? "rgba(0, 0, 0, 0.4)"
+                                : "rgba(255, 255, 255, 0.05)",
+                            borderColor: 
+                              tareasDelDia.length > 0
+                                ? "rgba(255, 255, 255, 0.2)"
+                                : "rgba(255, 255, 255, 0.05)",
                             borderRadius: "10px",
                             padding: "10px",
                             minHeight: "100px",
+                            cursor: "pointer",
                           }}
                           className="text-center d-flex flex-column  align-items-center"
                         >
@@ -145,11 +153,15 @@ export default function HomePage() {
                                   textDecoration: t.completada
                                     ? "line-through"
                                     : "none",
-                                  color: t.completada ? "#aaa" : "#66d9ef",
+                                  color: t.completada ? "#aaa" : "#white",
                                   fontWeight: t.completada ? "normal" : "bold",
                                   display: "flex",
                                   alignItems: "center",
                                   gap: "6px",
+                                  whiteSpace: "nowrap",
+                                  overflow: "hidden",
+                                  textOverflow: "ellipsis",
+                                  maxWidth: "220px", // ajusta este valor según tu diseño
                                 }}
                               >
                                 {t.texto}

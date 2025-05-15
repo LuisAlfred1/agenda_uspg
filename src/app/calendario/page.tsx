@@ -105,11 +105,11 @@ export default function CalendarioPage() {
                   <div
                     style={{
                       fontWeight: "bold",
-                      padding: "2px 4px",
+                      padding: "6px 4px",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      backgroundColor: "rgb(15, 219, 255)",
+                      backgroundColor: "rgb(255, 255, 255, 255.1)",
                       borderRadius: "6px",
                       color: "#000",
                     }}
@@ -137,14 +137,14 @@ export default function CalendarioPage() {
         }
 
         .fc-daygrid-event {
-          background-color: rgb(15, 219, 255);
+          background-color: rgb(206, 206, 206);
           border: none;
           border-radius: 6px;
           padding: 2px 4px;
           color: #000;
         }
         .fc-daygrid-event:hover {
-          background-color: rgb(23, 126, 146);
+          background-color: rgb(231, 231, 231);
         }
 
         .fc-toolbar-title {

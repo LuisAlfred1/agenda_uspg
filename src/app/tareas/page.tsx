@@ -483,7 +483,7 @@ export default function Tareas() {
         .task-list {
           padding: 1rem;
           font-family: "Segoe UI", sans-serif;
-          max-height: calc(100vh - 260px);
+          max-height: calc(100vh - 290px);
         }
         .task-item {
           width: 999px;
