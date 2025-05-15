@@ -48,12 +48,6 @@ npm run dev
 
 El proyecto estará disponible en `http://localhost:3000`.
 
-## Funcionalidades
-
-- **Gestión de Notas**: Creá, editá y eliminá notas fácilmente.
-- **Recordatorios**: Configurá recordatorios para tus notas importantes.
-- **Calendarización**: Visualizá tus notas en un calendario para una mejor organización.
-
 ## Licencia
 
 Este proyecto está bajo la licencia MIT. Para más detalles, consultá el archivo [LICENSE](LICENSE).
