@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AGENDA_USPG 📝
 
-## Getting Started
+## Descripción
 
-First, run the development server:
+Agenda USPG es una aplicación web construida con Next.js que permite a los usuarios gestionar sus tareas de forma eficiente. Incluye funcionalidades de autenticación con Google, creación y edición de tareas, calendario mensual interactivo, notificaciones para tareas pendientes o vencidas, y un resumen de actividades próximas. Es ideal para llevar el control personal o académico de compromisos diarios.
 
+## Login con google
+![image](https://github.com/user-attachments/assets/50944c76-cc63-47d1-9403-169ac4a6de7a)
+
+
+## Pagina principal con informacion de tares y notificaciones
+![image](https://github.com/user-attachments/assets/c5316ead-986b-4fb5-9457-18c44e9d1bf3)
+
+# To do list Tareas
+![image](https://github.com/user-attachments/assets/318c1a93-69df-4408-962a-f43677670013)
+
+# Calendario del mes con actividades
+![image](https://github.com/user-attachments/assets/cf513730-2a9c-4584-a3bd-60f85fd373c5)
+
+## Instalación
+
+Para instalar y configurar el proyecto, seguí estos pasos:
+
+1. Cloná el repositorio:
+
+   ```bash
+   git clone https://github.com/fleonel/uspg_av.git
+   ```
+
+2. Navegá al directorio del proyecto:
+
+   ```bash
+   cd uspg_av
+   ```
+
+3. Instalá las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+## Uso
+
+Para correr el proyecto en modo de desarrollo, ejecutá:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+El proyecto estará disponible en `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Gestión de Notas**: Creá, editá y eliminá notas fácilmente.
+- **Recordatorios**: Configurá recordatorios para tus notas importantes.
+- **Calendarización**: Visualizá tus notas en un calendario para una mejor organización.
 
-## Learn More
+## Licencia
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este proyecto está bajo la licencia MIT. Para más detalles, consultá el archivo [LICENSE](LICENSE).
