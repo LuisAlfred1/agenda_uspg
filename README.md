@@ -71,4 +71,4 @@ Abre tu navegador e ingresa a: `http://localhost:3000`, y listo.
 
 ## Licencia
 
-Este proyecto está bajo la licencia MIT. Para más detalles, consultá el archivo [LICENSE](LICENSE).
+Este proyecto tiene licencia MIT. Para más detalles, consultá el archivo [LICENSE](LICENSE).
