@@ -1,23 +1,44 @@
-# AGENDA_USPG 📝
+# 📝 AGENDA USPG
 
-## Descripción
+Es una aplicación web construida con **Next.js** que permite a los usuarios gestionar sus tareas de forma eficiente y mantenerse organizados. Ideal para uso académico o personal.
 
-Agenda USPG es una aplicación web construida con Next.js que permite a los usuarios gestionar sus tareas de forma eficiente. Incluye funcionalidades de autenticación con Google, creación y edición de tareas, calendario mensual interactivo, notificaciones para tareas pendientes o vencidas, y un resumen de actividades próximas. Es ideal para llevar el control personal o académico de compromisos diarios.
+---
 
-## Login con google
-![image](https://github.com/user-attachments/assets/50944c76-cc63-47d1-9403-169ac4a6de7a)
+## ✨ Funcionalidades principales
 
+- 🔐 Autenticación con Google
+- ✅ Crear, editar, completar y eliminar tareas
+- 🗓️ Calendario mensual interactivo
+- 🔔 Notificaciones para tareas del día y tareas vencidas
+- 📊 Resumen de tareas próximas
 
-## Pagina principal con informacion de tares y notificaciones
-![image](https://github.com/user-attachments/assets/0760c732-7fd3-4c9f-9dba-29481a777e78)
+---
 
-# To do list Tareas
-![image](https://github.com/user-attachments/assets/318c1a93-69df-4408-962a-f43677670013)
+## 🔑 Login con Google
 
-# Calendario del mes con actividades
-![image](https://github.com/user-attachments/assets/cf513730-2a9c-4584-a3bd-60f85fd373c5)
+![Login](https://github.com/user-attachments/assets/50944c76-cc63-47d1-9403-169ac4a6de7a)
 
-## Instalación
+---
+
+## 🏠 Página principal con información y notificaciones
+
+![Inicio](https://github.com/user-attachments/assets/0760c732-7fd3-4c9f-9dba-29481a777e78)
+
+---
+
+## 🗂️ Lista de tareas (To Do List)
+
+![To Do](https://github.com/user-attachments/assets/318c1a93-69df-4408-962a-f43677670013)
+
+---
+
+## 📆 Calendario mensual con actividades
+
+![Calendario](https://github.com/user-attachments/assets/cf513730-2a9c-4584-a3bd-60f85fd373c5)
+
+---
+
+## Instalación 
 
 Para instalar y configurar el proyecto, seguí estos pasos:
 
@@ -46,7 +67,7 @@ Para correr el proyecto en modo de desarrollo, ejecutá:
 npm run dev
 ```
 
-El proyecto estará disponible en `http://localhost:3000`.
+Abre tu navegador e ingresa a: `http://localhost:3000`, y listo.
 
 ## Licencia
 
