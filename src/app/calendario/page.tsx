@@ -48,26 +48,56 @@ export default function CalendarioPage() {
               borderRadius: "20px",
             }}
           >
-            <h3 className="text-white text-center">Tarea seleccionada</h3>
-            <hr className="text-white" />
+            <h3 className="text-white text-center fw-bold">
+              Tarea seleccionada
+            </h3>
+            <hr className="text-white opacity-50" />
+
             {tareaSeleccionada ? (
-              <div className="text-white mt-3">
-                <h6>{tareaSeleccionada.texto}</h6>
-                <p className="mt-4">
-                  <i className="bi bi-calendar2-event"></i> Fecha:{" "}
+              <div className="text-white mt-4">
+                <h5 className="fw-bold mb-3">
+                  {tareaSeleccionada.texto}{" "}
+                  <i className="bi bi-pencil-fill me-2"></i>
+                </h5>
+
+                <p className="mb-3 mt-4">
+                  <i className="bi bi-calendar2-event me-2 text-white"></i>
+                  <strong>Fecha:</strong>{" "}
                   {new Date(tareaSeleccionada.fecha).toLocaleDateString(
                     "es-ES"
                   )}
                 </p>
-                <p>
-                  <i className="bi bi-tag"></i> <strong>Categoría:</strong>{" "}
-                  {tareaSeleccionada.categoria}
+
+                <p className="mb-3">
+                  <i className="bi bi-tag me-2 text-primary"></i>
+                  <strong>Categoría:</strong>{" "}
+                  <span className="badge bg-primary">
+                    {tareaSeleccionada.categoria}
+                  </span>
+                </p>
+
+                <p className="mb-0">
+                  {tareaSeleccionada.completada ? (
+                    <>
+                      <i className="bi bi-check-circle-fill me-2 text-success"></i>
+                      <strong>Estado:</strong>{" "}
+                      <span className="badge bg-success">Completada</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="bi bi-clock-fill me-2 text-warning"></i>
+                      <strong>Estado:</strong>{" "}
+                      <span className="badge bg-warning text-dark">
+                        Pendiente
+                      </span>
+                    </>
+                  )}
                 </p>
               </div>
             ) : (
               <div className="text-center mt-5">
-                <i className="bi bi-journal-bookmark text-white fs-1"></i>
-                <p className="text-white text-center mt-4">
+                <i className="bi bi-journal-bookmark fs-1 text-white-50"></i>
+                <p className="text-white mt-4 opacity-75">
                   Haz clic en una tarea para ver los detalles.
                 </p>
               </div>

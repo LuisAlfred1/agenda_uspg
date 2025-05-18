@@ -149,6 +149,14 @@ export default function Tareas() {
 
     if (res.ok) {
       fetchTareas(); // Recarga tareas actualizadas
+
+      // Reproduce el sonido si la tarea fue completada
+      if (completada) {
+        const audio = new Audio("/sounds/completado.wav");
+        audio.play().catch((error) => {
+          console.error("Error al reproducir el audio:", error);
+        });
+      }
     } else {
       console.error("Error al marcar como completada");
     }
