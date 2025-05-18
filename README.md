@@ -44,38 +44,7 @@ Es una aplicación web construida con **Next.js** que permite a los usuarios ges
 
 ---
 
-## ⚙️ Instalación 
-
-Para instalar y configurar el proyecto, sigue estos pasos:
-
-1. Cloná el repositorio:
-
-   ```bash
-   https://github.com/LuisAlfred1/agenda_uspg.git
-   ```
-
-2. Navegá al directorio del proyecto:
-
-   ```bash
-   cd agenda_uspg
-   ```
-
-3. Instalá las dependencias:
-
-   ```bash
-   npm install
-   ```
-
-## Uso
-
-Para correr el proyecto en modo de desarrollo, ejecutá:
-```bash
-npm run dev
-```
-
-Abre tu navegador e ingresa a: `http://localhost:3000`, y listo.
-
 ## 🚧 Estado del despliegue
 
-❌ La aplicación web no pudo ser desplegada correctamente debido a errores en el entorno de despliegue.  
-Estamos trabajando para resolver el problema y restablecer el acceso lo antes posible. Ofrecemos disculpas por los inconvenientes.
+❌ Aún no he logrado desplegarlo correctamente debido a errores en el entorno de despliegue.  
+Estoy trabajando para resolver el problema y restablecer el acceso lo antes posible. Ofrezco disculpas por los inconvenientes.
