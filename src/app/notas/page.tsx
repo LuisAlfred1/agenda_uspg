@@ -23,15 +23,6 @@ export default function Notas() {
             <i className="bi bi-journal"></i> Mis notas
           </h4>
 
-          <div className="d-flex flex-column gap-2 mb-4">
-            <button className="btn btn-outline-light btn-sm">
-              <i className="bi bi-folder-plus me-2"></i>Crear carpeta
-            </button>
-            <button className="btn btn-outline-light btn-sm">
-              <i className="bi bi-file-earmark-plus me-2"></i>Crear nota
-            </button>
-          </div>
-
           <ul className="list-unstyled">
             <li
               className="mb-2 d-flex align-items-center gap-2 p-2 rounded"
@@ -41,16 +32,9 @@ export default function Notas() {
               }}
             >
               <i className="bi bi-clock-history"></i>
-              <span>Próximamente</span>
+              <span>......</span>
             </li>
           </ul>
-        </div>
-
-        <div
-          className="text-center"
-          style={{ fontSize: "0.75rem", opacity: 0.6 }}
-        >
-          © 2025 USPG agenda. Todos los derechos reservados.
         </div>
       </div>
 
