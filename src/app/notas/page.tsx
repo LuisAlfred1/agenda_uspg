@@ -1,12 +1,8 @@
 "use client";
 
-import Lottie from "lottie-react";
-import proxi from "@/animations/proximamente.json";
-
 export default function Notas() {
   return (
     <div className="d-flex" style={{ height: "600px" }}>
-      {/* Sidebar de notas */}
       {/* Sidebar de notas */}
       <div
         className="p-4 d-flex flex-column justify-content-between"
@@ -58,28 +54,8 @@ export default function Notas() {
           >
             🚧 PRÓXIMAMENTE...
           </h1>
-          <Lottie
-            animationData={proxi}
-            loop={true}
-            style={{
-              width: "570px",
-              height: "250px",
-              margin: "0 auto",
-            }}
-          />
           {/* Puedes eliminar la imagen si ya usas Lottie */}
-          {/* <img src="./notes.png" alt="notas" style={...} /> */}
         </div>
-
-        <style>
-          {`
-      @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-      }
-    `}
-        </style>
       </div>
     </div>
   );
