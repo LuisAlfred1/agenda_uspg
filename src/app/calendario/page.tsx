@@ -55,22 +55,18 @@ export default function CalendarioPage() {
 
             {tareaSeleccionada ? (
               <div className="text-white mt-4">
-                <h5 className="fw-bold mb-3">
-                  {tareaSeleccionada.texto}{" "}
-                  <i className="bi bi-pencil-fill me-2"></i>
-                </h5>
-
+                <h5 className="fw-bold mb-3">{tareaSeleccionada.texto} </h5>
                 <p className="mb-3 mt-4">
                   <i className="bi bi-calendar2-event me-2 text-white"></i>
-                  <strong>Fecha:</strong>{" "}
+                  Fecha:{" "}
                   {new Date(tareaSeleccionada.fecha).toLocaleDateString(
                     "es-ES"
                   )}
                 </p>
 
                 <p className="mb-3">
-                  <i className="bi bi-tag me-2 text-primary"></i>
-                  <strong>Categoría:</strong>{" "}
+                  <i className="bi bi-tag me-2"></i>
+                  Categoría:{" "}
                   <span className="badge bg-primary">
                     {tareaSeleccionada.categoria}
                   </span>
@@ -80,13 +76,13 @@ export default function CalendarioPage() {
                   {tareaSeleccionada.completada ? (
                     <>
                       <i className="bi bi-check-circle-fill me-2 text-success"></i>
-                      <strong>Estado:</strong>{" "}
+                      Estado:{" "}
                       <span className="badge bg-success">Completada</span>
                     </>
                   ) : (
                     <>
                       <i className="bi bi-clock-fill me-2 text-warning"></i>
-                      <strong>Estado:</strong>{" "}
+                      Estado:{" "}
                       <span className="badge bg-warning text-dark">
                         Pendiente
                       </span>

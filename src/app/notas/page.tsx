@@ -1,8 +1,5 @@
 "use client";
 
-import Lottie from "lottie-react";
-import proxi from "@/animations/proximamente.json";
-
 export default function Notas() {
   return (
     <div className="d-flex" style={{ height: "600px" }}>
@@ -23,15 +20,6 @@ export default function Notas() {
             <i className="bi bi-journal"></i> Mis notas
           </h4>
 
-          <div className="d-flex flex-column gap-2 mb-4">
-            <button className="btn btn-outline-light btn-sm">
-              <i className="bi bi-folder-plus me-2"></i>Crear carpeta
-            </button>
-            <button className="btn btn-outline-light btn-sm">
-              <i className="bi bi-file-earmark-plus me-2"></i>Crear nota
-            </button>
-          </div>
-
           <ul className="list-unstyled">
             <li
               className="mb-2 d-flex align-items-center gap-2 p-2 rounded"
@@ -44,13 +32,6 @@ export default function Notas() {
               <span>Próximamente</span>
             </li>
           </ul>
-        </div>
-
-        <div
-          className="text-center"
-          style={{ fontSize: "0.75rem", opacity: 0.6 }}
-        >
-          © 2025 USPG agenda. Todos los derechos reservados.
         </div>
       </div>
 
@@ -74,15 +55,6 @@ export default function Notas() {
           >
             🚧 PRÓXIMAMENTE...
           </h1>
-          <Lottie
-            animationData={proxi}
-            loop={true}
-            style={{
-              width: "570px",
-              height: "250px",
-              margin: "0 auto",
-            }}
-          />
           {/* Puedes eliminar la imagen si ya usas Lottie */}
           {/* <img src="./notes.png" alt="notas" style={...} /> */}
         </div>
