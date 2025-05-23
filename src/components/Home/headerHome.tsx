@@ -18,6 +18,9 @@ export default function HeaderHome() {
   const [mostrarDropdown, setMostrarDropdown] = useState(false);
 
   useEffect(() => {
+    // ✅ Verificar que estamos en el cliente antes de usar document
+    if (typeof window === 'undefined') return;
+
     function handleClickOutside(event: MouseEvent) {
       if (
         dropdownRef.current &&
