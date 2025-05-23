@@ -1,10 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Tooltip } from "react-tooltip";
+import dynamic from "next/dynamic";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+
+const Tooltip = dynamic(
+  () => import("react-tooltip").then((mod) => mod.Tooltip),
+  { ssr: false }
+);
 
 export default function Tareas() {
   const [texto, setTexto] = useState("");

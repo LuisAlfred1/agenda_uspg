@@ -1,9 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import esLocale from "@fullcalendar/core/locales/es"; // calendario en español
+import dynamic from 'next/dynamic';
+
+// Carga dinámica de FullCalendar y plugins (sin SSR)
+const FullCalendar = dynamic(
+  () => import("@fullcalendar/react").then((mod) => mod.default),
+  { ssr: false }
+);
 
 interface Tarea {
   id: number;
