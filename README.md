@@ -47,4 +47,4 @@ Es una aplicación web construida con **Next.js** que permite a los usuarios ges
 ## 🚧 Estado del despliegue
 
 ❌ Aún no he logrado desplegarlo correctamente debido a errores en el entorno de despliegue.  
-Estoy trabajando para resolver el problema y restablecer el acceso lo antes posible. Ofrezco disculpas por los inconvenientes.
+Lo arreglaré lo antes posible. Ofrezco disculpas por los inconvenientes.
